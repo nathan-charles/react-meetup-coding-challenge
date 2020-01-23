@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Typography } from '@material-ui/core';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 import useStyles from './header.styles';
 
@@ -15,6 +16,11 @@ const Header = ({ name, date }) => {
       </Container>
     </div>
   );
+};
+
+Header.propTypes = {
+  name: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default Header;

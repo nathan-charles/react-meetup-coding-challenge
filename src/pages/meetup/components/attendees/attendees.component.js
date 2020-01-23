@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Card, CardContent, Avatar, Tabs, Tab, AppBar } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 import useStyles from './attendees.styles';
 
@@ -46,6 +47,16 @@ const Attendees = ({ attendees, yesRsvpCount, waitlistCount }) => {
       </Grid>
     </div>
   );
+};
+
+Attendees.propTypes = {
+  attendees: PropTypes.array,
+  yesRsvpCount: PropTypes.number.isRequired,
+  waitlistCount: PropTypes.number.isRequired,
+};
+
+Attendees.defaultProps = {
+  attendees: [],
 };
 
 export default Attendees;
