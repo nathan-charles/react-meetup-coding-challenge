@@ -37,9 +37,9 @@ const Meetup = props => {
       <Header name={event.name} date={event.local_date} />
       <div className={classes.root}>
         <Container>
-          <Typography variant="h5">Details</Typography>
-          <Grid container spacing={2}>
+          <Grid container>
             <Grid sm={12} md={8}>
+              <Typography variant="h5">Details</Typography>
               <Typography
                 style={{ overflowWrap: 'break-word' }}
                 variant="body1"
