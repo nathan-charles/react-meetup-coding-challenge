@@ -29,7 +29,7 @@ const Attendees = ({ attendees, yesRsvpCount, waitlistCount }) => {
             const { thumb_link: photo } = member.photo ? member.photo : { thumb_link: undefined };
 
             return (
-              <Grid item xs={12} sm={6} md={4} lg={2}>
+              <Grid key={member.id} item xs={12} sm={6} md={4} lg={2}>
                 <Card className={classes.card}>
                   <CardContent className={classes.cardContent}>
                     <Avatar className={classes.avatarPhoto} alt={name} src={photo} />

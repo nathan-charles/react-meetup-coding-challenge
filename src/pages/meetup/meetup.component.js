@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container, Typography, Grid } from '@material-ui/core';
 
 import { meetup as meetupAPI } from '../../services';
-import { Header, Attendees } from './components';
+import { Header, Attendees, Location } from './components';
 import useStyles from './meetup.styles';
 
 const Meetup = props => {
@@ -38,7 +38,18 @@ const Meetup = props => {
       <div className={classes.root}>
         <Container>
           <Typography variant="h5">Details</Typography>
-          <Typography variant="body1" dangerouslySetInnerHTML={{ __html: event.description }} />
+          <Grid container spacing={2}>
+            <Grid sm={12} md={8}>
+              <Typography
+                style={{ overflowWrap: 'break-word' }}
+                variant="body1"
+                dangerouslySetInnerHTML={{ __html: event.description }}
+              />
+            </Grid>
+            <Grid sm={12} md={4}>
+              <Location venue={event.venue} />
+            </Grid>
+          </Grid>
           <Attendees attendees={attendees} yesRsvpCount={event.yes_rsvp_count} waitlistCount={event.waitlist_count} />
         </Container>
       </div>
