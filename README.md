@@ -1,3 +1,6 @@
+## Deployed - [https://meetup-coding-challenge.netlify.com/meetup/reactjs-dallas](https://meetup-coding-challenge.netlify.com/meetup/reactjs-dallas)
+
+<br /><br />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
