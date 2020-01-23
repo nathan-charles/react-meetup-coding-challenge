@@ -34,7 +34,7 @@ const Meetup = props => {
 
   return (
     <div>
-      <Header name={event.name} />
+      <Header name={event.name} date={event.local_date} />
       <div className={classes.root}>
         <Container>
           <Typography variant="h5">Details</Typography>
