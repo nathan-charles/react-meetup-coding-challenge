@@ -1,0 +1,49 @@
+import React, { useEffect, useState } from 'react';
+import { Container, Typography } from '@material-ui/core';
+
+import { meetup as meetupAPI } from '../../services';
+import { Header, Attendees } from './components';
+import useStyles from './meetup.styles';
+
+const Meetup = props => {
+  const [event, setEvent] = useState(undefined);
+  const [attendees, setAttendees] = useState([]);
+
+  const classes = useStyles({});
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const group = props.match.params.group;
+
+      const eventRequest = await meetupAPI.fetchEvents(group, 1);
+      const event = eventRequest.data[0];
+      setEvent(event);
+
+      const eventAttendeesRequest = await meetupAPI.fetchEventRSVPS(group, event.id);
+      setAttendees(eventAttendeesRequest.data);
+    };
+
+    fetchEvent();
+
+    // eslint-disable-next-line
+  }, []);
+
+  if (event === undefined) {
+    return <div>loading...</div>;
+  }
+
+  return (
+    <div>
+      <Header name={event.name} />
+      <div className={classes.root}>
+        <Container>
+          <Typography variant="h5">Details</Typography>
+          <Typography variant="body1" dangerouslySetInnerHTML={{ __html: event.description }} />
+          <Attendees attendees={attendees} yesRsvpCount={event.yes_rsvp_count} waitlistCount={event.waitlist_count} />
+        </Container>
+      </div>
+    </div>
+  );
+};
+
+export default Meetup;
