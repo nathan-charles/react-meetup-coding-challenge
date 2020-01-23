@@ -10,14 +10,13 @@ const Location = ({ venue }) => {
   const classes = useStyles({});
 
   const { name, address_1: address, city, state, lat, lon: lng } = venue;
-  const center = { lat, lng };
 
   return (
     <Card className={classes.card}>
       <CardHeader avatar={<LocationOnIcon />} title={name} subheader={`${address} - ${city}, ${state}`} />
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDnJLojru65uF52ykcv9w_-5Zr03INZgZU' }}
-        defaultCenter={center}
+        defaultCenter={{ lat, lng }}
         defaultZoom={16}
       ></GoogleMapReact>
     </Card>
